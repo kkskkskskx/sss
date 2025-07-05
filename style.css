@@ -1,1 +1,8 @@
+header {
+  background-color: #ccff99; /* светло-лаймовый */
+  padding: 20px; /* чтобы был отступ внутри */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
