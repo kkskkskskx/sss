@@ -8,6 +8,9 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #eefaff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -31,7 +34,6 @@
     .nav {
       display: flex;
       gap: 20px;
-      justify-content: space-between;
     }
 
     .nav a {
@@ -49,6 +51,7 @@
       justify-content: space-around;
       padding: 40px 20px;
       gap: 20px;
+      flex: 1;
     }
 
     .column {
@@ -80,6 +83,14 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    footer {
+      background-color: #d0ffd0;
+      padding: 20px;
+      text-align: center;
+      font-size: 16px;
+      border-top: 2px solid #99cc66;
     }
   </style>
 </head>
@@ -113,19 +124,24 @@
         <img src="https://i.imgur.com/lSo7U9y.png" alt="спорт">
         <img src="https://i.imgur.com/vNOfE4s.png" alt="фрукти">
       </div>
-      <a class="button" href="porady.html">Дізнатися більше</a>
+      <button class="button" onclick="window.location.href='porady.html'">Дізнатися більше</button>
     </div>
 
     <!-- Правая колонка -->
     <div class="column">
-      <p><b>5 головних порад для твого здоров’я:</b></p>
+      <p><b>6 головних порад для твого здоров’я:</b></p>
       <p>🥗 1. Харчуйся збалансовано: більше овочів, фруктів, злаків і менше цукру та жирного.</p>
       <p>💧 2. Пий достатньо води (6–8 склянок щодня).</p>
       <p>🛌 3. Спи не менше 7–8 годин щоночі.</p>
       <p>🚶‍♀️ 4. Щодня рухайся — зарядка, прогулянка, йога або спорт.</p>
       <p>😊 5. Дбай про свій емоційний стан — розмовляй, смійся, відпочивай від гаджетів.</p>
+      <p>📅 6. Дотримуйся режиму дня — це допомагає організму бути в тонусі.</p>
     </div>
   </div>
+
+  <footer>
+    📧 Email: info@healthsite.ua | 📱 Телефон: +380 67 123 45 67 | 📍 Україна
+  </footer>
 
 </body>
 </html>
