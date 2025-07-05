@@ -1,61 +1,115 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      header {
-        background-color: #ccff99; /* светло-лаймовый */
-        padding: 20px;
-        display: flex;
-        justify-content: space-between; /* разнести блоки */
-        align-items: center;
-        border: 2px solid #99cc66; /* бордер */
-        border-radius: 12px; /* скругление */
-      }
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Моє здоров’я</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eefaff;
+    }
 
-      .left-column {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
+    header {
+      background-color: #00ff00; /* Яскраво-зелений */
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 10px 10px;
+    }
 
-      .right-column {
-        display: flex;
-        gap: 15px;
-      }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
 
-      .button {
-        padding: 8px 12px;
-        background-color: #66cc66;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-      }
+    .nav {
+      display: flex;
+      gap: 15px;
+    }
 
-      .nav-link {
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-      }
+    .nav a {
+      background-color: #33cc33;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
 
-      img {
-        height: 40px;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="left-column">
-        <img src="/uploads/2021/02/logo_0_1613588860.svg">
-        <span>Магазин Майн</span>
+    .container {
+      display: flex;
+      justify-content: space-around;
+      padding: 30px 20px;
+      gap: 20px;
+    }
+
+    .column {
+      width: 45%;
+      background-color: #ffe6e6; /* светло-розовый */
+      border: 2px solid #999;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .column img {
+      width: 80px;
+      margin: 10px;
+    }
+
+    .button {
+      margin-top: 10px;
+      background-color: #33cc33;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-title">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_blue_flower.png" alt="logo" width="50">
+      Моє здоров’я
+    </div>
+    <div class="nav">
+      <a href="#">Головна</a>
+      <a href="#">Поради</a>
+      <a href="#">Контакти</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="column">
+      <p><b>Привіт!</b><br>
+      Тут я тобі допомогу як швидко похудіти!</p>
+      <p>
+        Здоров'я - це не лише відсутність хвороб,<br>
+        а стан повного фізичного, душевного<br>
+        та соціального благополуччя
+      </p>
+      <div>
+        <img src="https://i.imgur.com/Zu4n0fh.png" alt="здорове серце">
+        <img src="https://i.imgur.com/lSo7U9y.png" alt="спорт">
+        <img src="https://i.imgur.com/vNOfE4s.png" alt="фрукти">
       </div>
+      <button class="button">Дізнатися більше</button>
+    </div>
 
-      <div class="right-column">
-        <a class="button" href="#">Знижки</a>
-        <a class="nav-link" href="#">Каталог</a>
-        <a class="nav-link" href="#">Оптом</a>
-        <a class="nav-link" href="#">Доставка</a>
-        <a class="nav-link" href="#">Повернення товару</a>
-      </div>
-    </header>
-  </body>
+    <div class="column">
+      <!-- Пусто — можеш додати інший контент -->
+    </div>
+  </div>
+
+</body>
 </html>
