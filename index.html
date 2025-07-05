@@ -1,15 +1,61 @@
 <html>
   <head>
     <link rel="stylesheet" href="style.css">
+    <style>
+      header {
+        background-color: #ccff99; /* светло-лаймовый */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between; /* разнести блоки */
+        align-items: center;
+        border: 2px solid #99cc66; /* бордер */
+        border-radius: 12px; /* скругление */
+      }
+
+      .left-column {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .right-column {
+        display: flex;
+        gap: 15px;
+      }
+
+      .button {
+        padding: 8px 12px;
+        background-color: #66cc66;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+
+      img {
+        height: 40px;
+      }
+    </style>
   </head>
   <body>
     <header>
-      <img src="/uploads/2021/02/logo_0_1613588860.svg">
-      <a class="button" href="">Знижки</a>
-      <a class="nav-link" href="">Каталог</a>
-      <a class="nav-link" href="">Оптом</a>
-      <a class="nav-link" href="">Доставка</a>
-      <a class="nav-link" href="">Повернення товару</a>
+      <div class="left-column">
+        <img src="/uploads/2021/02/logo_0_1613588860.svg">
+        <span>Магазин Майн</span>
+      </div>
+
+      <div class="right-column">
+        <a class="button" href="#">Знижки</a>
+        <a class="nav-link" href="#">Каталог</a>
+        <a class="nav-link" href="#">Оптом</a>
+        <a class="nav-link" href="#">Доставка</a>
+        <a class="nav-link" href="#">Повернення товару</a>
+      </div>
     </header>
   </body>
 </html>
