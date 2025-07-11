@@ -1,158 +1,179 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Поради для здоров’я</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff5e6;
-      color: #333;
+      background-color: #eefaff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      animation: fadeInBody 1.5s ease;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      background-color: #00cc00;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 10px 10px;
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav a {
+      background-color: #33cc33;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav a:hover {
+      background-color: #009900;
+      transform: scale(1.1);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
       padding: 40px 20px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInContent 1.5s ease-in-out;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      gap: 20px;
+      flex: 1;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.5s ease;
     }
 
-    @keyframes fadeInContent {
-      from { opacity: 0; transform: translateY(30px);}
-      to { opacity: 1; transform: translateY(0);}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    h1 {
-      color: #ff6600;
-      text-align: center;
-      margin-bottom: 40px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-      animation: glow 3s ease-in-out infinite alternate;
+    .column {
+      width: 30%;
+      background-color: #fff0f5;
+      border: 2px solid #999;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: left;
+      transition: 0.3s;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ff6600; }
-      to { text-shadow: 0 0 20px #ff3300; }
+    .column:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 10px #ff99cc;
     }
 
-    p, ul {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    ul li {
+    .column h2 {
+      font-size: 22px;
+      color: #cc0066;
       margin-bottom: 15px;
     }
 
-    .back-btn {
-      display: block;
-      margin: 40px auto 0;
-      padding: 12px 28px;
+    .column p {
       font-size: 18px;
-      font-weight: bold;
-      background-color: #ff6600;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 10px rgba(255,102,0,0.5);
+      margin-bottom: 15px;
     }
 
-    .back-btn:hover {
-      background-color: #cc5200;
+    .button {
+      margin-top: 20px;
+      background-color: #ff3399;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #cc0066;
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(204,82,0,0.7);
     }
 
-    /* Нічна тема */
-    body.night {
-      background-color: #1a1a1a;
-      color: #ccc;
+    footer {
+      background-color: #d0ffd0;
+      padding: 20px;
+      text-align: center;
+      font-size: 16px;
+      border-top: 2px solid #99cc66;
+      animation: fadeIn 2s ease;
     }
 
-    body.night h1 {
-      color: #ff9933;
-      text-shadow: 0 0 20px #ff6600;
-    }
-
-    body.night .back-btn {
-      background-color: #cc6600;
-      box-shadow: 0 4px 10px rgba(204,102,0,0.7);
-      color: #fff;
-    }
-
-    body.night .back-btn:hover {
-      background-color: #993d00;
-      box-shadow: 0 6px 15px rgba(153,61,0,0.9);
-    }
-
-    /* Переключатель */
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #ff6600;
-      border: none;
-      padding: 10px 16px;
-      font-weight: bold;
-      border-radius: 20px;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(255,102,0,0.6);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
-      z-index: 1000;
-    }
-
-    .theme-toggle:hover {
-      background-color: #cc5200;
-    }
-
-    body.night .theme-toggle {
-      background-color: #cc6600;
-      color: #fff;
-    }
-
-    body.night .theme-toggle:hover {
-      background-color: #993d00;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <button class="theme-toggle" id="themeToggle">Нічна тема</button>
+  <header>
+    <div class="logo-title">
+      <img src="https://st2.depositphotos.com/1588812/7416/v/450/depositphotos_74160163-stock-illustration-vector-logo-running-man-for.jpg" alt="logo" width="50">
+      Моє здоров’я
+    </div>
+    <div class="nav">
+      <a href="index.html">Головна</a>
+      <a href="#">Детальніше</a>
+    </div>
+  </header>
 
-  <h1>Поради для підтримки здоров’я</h1>
+  <div class="container">
+    <div class="column">
+      <h2>Як схуднути з вправами</h2>
+      <p>Фізична активність — це ключ до схуднення та здорового життя. Регулярне виконання вправ допомагає спалювати калорії, покращує настрій і зміцнює м’язи.</p>
+      <p>Роби зарядку щоранку по 15 хвилин: легка розминка, нахили, присідання. Це розігріє м'язи і підготує організм до дня.</p>
+    </div>
 
-  <p>Ось детальні поради, які допоможуть тобі залишатися здоровим кожного дня:</p>
+    <div class="column">
+      <h2>Здорове харчування</h2>
+      <p>Їж менше цукру, солі, жирного. Більше овочів, фруктів, злаків, білка. Пий воду. Обмеж фастфуд.</p>
+      <p>Складай раціон на день і дотримуйся режиму харчування.</p>
+    </div>
 
-  <ul>
-    <li><b>Харчування:</b> Вживай різноманітні овочі та фрукти, уникай надмірної кількості цукру і жирів.</li>
-    <li><b>Фізична активність:</b> Робити зарядку щоранку, ходити пішки, займатися спортом принаймні 3-4 рази на тиждень.</li>
-    <li><b>Сон:</b> Лягай спати і прокидайся в один і той самий час, уникай екрану за годину до сну.</li>
-    <li><b>Психологічне здоров’я:</b> Відпочивай, спілкуйся з друзями, займайся хобі, уникай стресових ситуацій.</li>
-    <li><b>Гігієна:</b> Мий руки перед їжею, після прогулянок, дбай про чистоту тіла та одягу.</li>
-    <li><b>Регулярні обстеження:</b> Відвідуй лікаря навіть без явних симптомів для профілактики.</li>
-  </ul>
+    <div class="column">
+      <h2>Сон і відпочинок</h2>
+      <p>Якісний сон — основа здоров’я. Спи по 7–8 годин на добу. Вимикай екрани за 30 хвилин до сну.</p>
+      <p>Регулярний режим сну допоможе тілу відновлюватись.</p>
+    </div>
+  </div>
 
-  <button class="back-btn" onclick="window.location.href='index.html'">Повернутися назад</button>
+  <footer>
+    📧 Email: info@healthsite.ua | 📱 Телефон: +380 67 123 45 67 | 📍 Україна
+  </footer>
 
-  <script>
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('night');
-      if(document.body.classList.contains('night')) {
-        toggleBtn.textContent = 'Денна тема';
-      } else {
-        toggleBtn.textContent = 'Нічна тема';
-      }
-    });
-  </script>
 </body>
 </html>
