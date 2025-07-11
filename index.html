@@ -2,116 +2,194 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Моє здоров’я</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .dark {
-      background-color: #121212;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 1em;
-      text-align: center;
-    }
-    nav {
+      background-color: #eefaff;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      background-color: #eee;
-      padding: 10px;
+      flex-direction: column;
+      min-height: 100vh;
+      animation: fadeInBody 1.5s ease-in-out;
     }
-    nav a {
-      text-decoration: none;
-      color: #333;
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      background-color: #00cc00;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 10px 10px;
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 28px;
       font-weight: bold;
+      color: white;
     }
-    .dark nav {
-      background-color: #222;
+
+    .nav {
+      display: flex;
+      gap: 20px;
     }
-    .dark nav a {
-      color: #f0f0f0;
+
+    .nav a {
+      background-color: #33cc33;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
     }
+
+    .nav a:hover {
+      background-color: #009900;
+      transform: scale(1.1);
+    }
+
     .container {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-around;
-      padding: 2em;
+      padding: 40px 20px;
+      gap: 20px;
+      flex: 1;
+      animation: fadeInUp 1.5s ease-out;
     }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .column {
-      flex: 1 1 300px;
-      padding: 1em;
-      background-color: #fff;
-      border-radius: 10px;
-      margin: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .dark .column {
-      background-color: #1e1e1e;
-    }
-    footer {
+      width: 45%;
+      background-color: #ffe6e6;
+      border: 2px solid #999;
+      border-radius: 15px;
+      padding: 25px;
       text-align: center;
-      padding: 1em;
-      background-color: #4CAF50;
-      color: white;
+      transition: transform 0.3s ease;
     }
-    .theme-toggle {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+
+    .column:hover {
+      transform: translateY(-5px);
+    }
+
+    .column p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .column img {
+      width: 80px;
+      margin: 10px;
+      transition: transform 0.3s;
+    }
+
+    .column img:hover {
+      transform: scale(1.2);
+    }
+
+    .button {
+      margin-top: 20px;
+      background-color: #33cc33;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 1.5em;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #009900;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #d0ffd0;
+      padding: 20px;
+      text-align: center;
+      font-size: 16px;
+      border-top: 2px solid #99cc66;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="theme-toggle" id="theme-toggle">🌙</div>
+
   <header>
-    <h1>Моє здоров’я</h1>
+    <div class="logo-title">
+      <img src="https://st2.depositphotos.com/1588812/7416/v/450/depositphotos_74160163-stock-illustration-vector-logo-running-man-for.jpg" alt="logo" width="50">
+      Моє здоров’я
+    </div>
+    <div class="nav">
+      <a href="#">Головна</a>
+      <a href="porady.html">Детальніше</a>
+    </div>
   </header>
-  <nav>
-    <a href="index.html">Головна</a>
-    <a href="porady.html">Поради</a>
-  </nav>
+
   <div class="container">
     <div class="column">
-      <p>💡 Чи знаєш ти, що всього 30 хвилин активності на день можуть значно покращити твоє здоров’я? 🏃‍♂️🚴‍♀️🧘‍♂️</p>
-      <p>Правильне харчування, якісний сон і позитивне мислення — це твої суперсили у світі здоров’я! 🍎😴😊</p>
+      <p><b>Привіт!</b></p>
+      <p>
+        Цей сайт допоможе тобі дізнатися, як підтримувати здоров’я кожного дня.  
+        Здоров’я — це не лише відсутність хвороб, а стан повного фізичного, психологічного та соціального благополуччя.
+      </p>
+      <p>
+        Тут ти знайдеш поради щодо харчування, режиму сну, активності та психологічної рівноваги.
+        Ми віримо, що турбота про себе — це шлях до щасливого та гармонійного життя.
+      </p>
+      <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKK7yv4p28g8v9PClGNhI8GPXe0WovrxyYdw&s" alt="здорове серце">
+        <img src="https://media.istockphoto.com/id/515232220/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%87%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%D0%BA-%D0%B1%D1%96%D0%B3%D1%83%D0%BD.jpg?s=612x612&w=0&k=20&c=dueTojiQV0-YsjosNQXPUtFJwZVsietJ7Y27XSfFQvQ=" alt="спорт">
+        <img src="https://fire-house.ru/wp-content/uploads/2023/08/fh-priroda1.jpg" alt="фрукти">
+      </div>
+      <button class="button" onclick="window.location.href='porady.html'">Дізнатися більше</button>
+    </div>
+
+    <div class="column">
+      <p><b>6 головних порад для твого здоров’я:</b></p>
+      <p>🥗 1. Харчуйся збалансовано</p>
+      <p>💧 2. Пий достатньо води</p>
+      <p>🛌 3. Спи не менше 7–8 годин</p>
+      <p>🚶‍♀️ 4. Щодня рухайся</p>
+      <p>😊 5. Дбай про емоційний стан</p>
+      <p>📅 6. Дотримуйся режиму дня</p>
     </div>
   </div>
+
   <footer>
-    &copy; 2025 Моє здоров’я. Всі права захищено.
+    📧 Email: info@healthsite.ua | 📱 Телефон: +380 67 123 45 67 | 📍 Україна
   </footer>
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
 
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        body.classList.add('dark');
-        themeToggle.textContent = '☀️';
-      } else {
-        body.classList.remove('dark');
-        themeToggle.textContent = '🌙';
-      }
-      localStorage.setItem('theme', theme);
-    }
-
-    themeToggle.addEventListener('click', () => {
-      const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-      applyTheme(newTheme);
-    });
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme);
-  </script>
 </body>
 </html>
