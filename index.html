@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Моє здоров’я</title>
   <style>
     * {
@@ -12,10 +12,12 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #eefaff;
+      color: #222;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       animation: fadeInBody 1.5s ease-in-out;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     @keyframes fadeInBody {
@@ -31,6 +33,7 @@
       align-items: center;
       border-radius: 0 0 10px 10px;
       animation: slideDown 1s ease-out;
+      transition: background-color 0.5s ease;
     }
 
     @keyframes slideDown {
@@ -60,7 +63,7 @@
       text-decoration: none;
       font-size: 16px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .nav a:hover {
@@ -75,6 +78,7 @@
       gap: 20px;
       flex: 1;
       animation: fadeInUp 1.5s ease-out;
+      flex-wrap: wrap;
     }
 
     @keyframes fadeInUp {
@@ -89,26 +93,33 @@
       border-radius: 15px;
       padding: 25px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.5s ease, border-color 0.5s ease;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
 
     .column:hover {
       transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
     .column p {
       font-size: 20px;
       margin-bottom: 20px;
+      line-height: 1.5;
     }
 
     .column img {
       width: 80px;
       margin: 10px;
-      transition: transform 0.3s;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
     }
 
     .column img:hover {
       transform: scale(1.2);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     }
 
     .button {
@@ -122,11 +133,13 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(51,204,51,0.4);
     }
 
     .button:hover {
       background-color: #009900;
       transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,153,0,0.6);
     }
 
     footer {
@@ -136,25 +149,92 @@
       font-size: 16px;
       border-top: 2px solid #99cc66;
       animation: fadeIn 2s ease-in;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
+    /* Нічна тема */
+    body.night {
+      background-color: #121824;
+      color: #c8d0e7;
+    }
+
+    body.night header {
+      background-color: #004400;
+    }
+
+    body.night .nav a {
+      background-color: #006600;
+      color: #c8d0e7;
+    }
+
+    body.night .nav a:hover {
+      background-color: #003300;
+    }
+
+    body.night .column {
+      background-color: #1e2a3a;
+      border-color: #555;
+      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    body.night .column:hover {
+      box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    body.night .button {
+      background-color: #006600;
+      box-shadow: 0 4px 10px rgba(0, 102, 0, 0.6);
+    }
+
+    body.night .button:hover {
+      background-color: #003300;
+      box-shadow: 0 6px 15px rgba(0, 51, 0, 0.8);
+    }
+
+    body.night footer {
+      background-color: #223322;
+      color: #a2c48b;
+      border-top-color: #446633;
+    }
+
+    /* Переключатель темы */
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      padding: 8px 16px;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+    }
+
+    .theme-toggle:hover {
+      background-color: white;
+      color: #00cc00;
+    }
+
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo-title">
-      <img src="https://st2.depositphotos.com/1588812/7416/v/450/depositphotos_74160163-stock-illustration-vector-logo-running-man-for.jpg" alt="logo" width="50">
+      <img src="https://st2.depositphotos.com/1588812/7416/v/450/depositphotos_74160163-stock-illustration-vector-logo-running-man-for.jpg" alt="logo" width="50" />
       Моє здоров’я
     </div>
     <div class="nav">
       <a href="#">Головна</a>
       <a href="porady.html">Детальніше</a>
     </div>
+    <button class="theme-toggle" id="themeToggle">Нічна тема</button>
   </header>
 
   <div class="container">
@@ -169,27 +249,40 @@
         Ми віримо, що турбота про себе — це шлях до щасливого та гармонійного життя.
       </p>
       <div>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKK7yv4p28g8v9PClGNhI8GPXe0WovrxyYdw&s" alt="здорове серце">
-        <img src="https://media.istockphoto.com/id/515232220/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%87%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%D0%BA-%D0%B1%D1%96%D0%B3%D1%83%D0%BD.jpg?s=612x612&w=0&k=20&c=dueTojiQV0-YsjosNQXPUtFJwZVsietJ7Y27XSfFQvQ=" alt="спорт">
-        <img src="https://fire-house.ru/wp-content/uploads/2023/08/fh-priroda1.jpg" alt="фрукти">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKK7yv4p28g8v9PClGNhI8GPXe0WovrxyYdw&s" alt="здорове серце" />
+        <img src="https://media.istockphoto.com/id/515232220/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%87%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%D0%BA-%D0%B1%D1%96%D0%B3%D1%83%D0%BD.jpg?s=612x612&w=0&k=20&c=pB9b5kxT6nkUb9a0jsjYZM5NGsCoUlA6rqWDD1RuMfY=" alt="бігун" />
       </div>
-      <button class="button" onclick="window.location.href='porady.html'">Дізнатися більше</button>
     </div>
 
     <div class="column">
-      <p><b>6 головних порад для твого здоров’я:</b></p>
-      <p>🥗 1. Харчуйся збалансовано</p>
-      <p>💧 2. Пий достатньо води</p>
-      <p>🛌 3. Спи не менше 7–8 годин</p>
-      <p>🚶‍♀️ 4. Щодня рухайся</p>
-      <p>😊 5. Дбай про емоційний стан</p>
-      <p>📅 6. Дотримуйся режиму дня</p>
+      <p>Ось деякі правила, яких варто дотримуватися для збереження здоров’я:</p>
+      <ul style="text-align:left; font-size: 18px; line-height: 1.5;">
+        <li>Збалансоване харчування, багате на овочі та фрукти.</li>
+        <li>Регулярна фізична активність не менше 30 хвилин на день.</li>
+        <li>Достатній та якісний сон (7-8 годин щоденно).</li>
+        <li>Зниження стресу та підтримка позитивного настрою.</li>
+        <li>Відмова від шкідливих звичок (паління, надмірне вживання алкоголю).</li>
+        <li>Регулярні медичні огляди.</li>
+      </ul>
+      <button class="button" onclick="window.location.href='porady.html'">Детальніше</button>
     </div>
   </div>
 
   <footer>
-    📧 Email: info@healthsite.ua | 📱 Телефон: +380 67 123 45 67 | 📍 Україна
+    © 2023 Моє здоров’я. Всі права захищені.
   </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('night');
+      if(document.body.classList.contains('night')) {
+        toggleBtn.textContent = 'Денна тема';
+      } else {
+        toggleBtn.textContent = 'Нічна тема';
+      }
+    });
+  </script>
 
 </body>
 </html>
