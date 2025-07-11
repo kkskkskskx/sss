@@ -11,13 +11,41 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #eefaff;
-      color: #222;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       animation: fadeInBody 1.5s ease-in-out;
       transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    :root {
+      --bg-color: #eefaff;
+      --header-bg: #00cc00;
+      --nav-bg: #33cc33;
+      --nav-hover-bg: #009900;
+      --column-bg: #ffe6e6;
+      --column-border: #999;
+      --footer-bg: #d0ffd0;
+      --footer-border: #99cc66;
+      --text-color: #000;
+      --button-bg: #33cc33;
+      --button-hover-bg: #009900;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --header-bg: #004d00;
+      --nav-bg: #006600;
+      --nav-hover-bg: #009900;
+      --column-bg: #2e2e2e;
+      --column-border: #555;
+      --footer-bg: #203020;
+      --footer-border: #336633;
+      --text-color: #eee;
+      --button-bg: #339933;
+      --button-hover-bg: #66bb66;
     }
 
     @keyframes fadeInBody {
@@ -26,14 +54,14 @@
     }
 
     header {
-      background-color: #00cc00;
+      background-color: var(--header-bg);
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-radius: 0 0 10px 10px;
       animation: slideDown 1s ease-out;
-      transition: background-color 0.5s ease;
+      position: relative;
     }
 
     @keyframes slideDown {
@@ -48,6 +76,7 @@
       font-size: 28px;
       font-weight: bold;
       color: white;
+      user-select: none;
     }
 
     .nav {
@@ -56,7 +85,7 @@
     }
 
     .nav a {
-      background-color: #33cc33;
+      background-color: var(--nav-bg);
       color: white;
       padding: 12px 24px;
       border-radius: 8px;
@@ -67,7 +96,7 @@
     }
 
     .nav a:hover {
-      background-color: #009900;
+      background-color: var(--nav-hover-bg);
       transform: scale(1.1);
     }
 
@@ -88,44 +117,43 @@
 
     .column {
       width: 45%;
-      background-color: #ffe6e6;
-      border: 2px solid #999;
+      background-color: var(--column-bg);
+      border: 2px solid var(--column-border);
       border-radius: 15px;
       padding: 25px;
       text-align: center;
-      transition: transform 0.3s ease, background-color 0.5s ease, border-color 0.5s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
 
     .column:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
     .column p {
       font-size: 20px;
       margin-bottom: 20px;
-      line-height: 1.5;
     }
 
     .column img {
       width: 80px;
       margin: 10px;
       border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-      filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.15));
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .column img:hover {
-      transform: scale(1.2);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transform: scale(1.25) rotate(5deg);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
     .button {
       margin-top: 20px;
-      background-color: #b85454;
-      color: #ffb3b3;
+      background-color: var(--button-bg);
+      color: white;
       padding: 12px 24px;
       border: none;
       border-radius: 8px;
@@ -133,23 +161,22 @@
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 4px 10px rgba(51,204,51,0.4);
+      user-select: none;
     }
 
     .button:hover {
-      background-color: #009900;
+      background-color: var(--button-hover-bg);
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,153,0,0.6);
     }
 
     footer {
-      background-color: #d0ffd0;
+      background-color: var(--footer-bg);
       padding: 20px;
       text-align: center;
       font-size: 16px;
-      border-top: 2px solid #99cc66;
+      border-top: 2px solid var(--footer-border);
       animation: fadeIn 2s ease-in;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -157,68 +184,27 @@
       to { opacity: 1; }
     }
 
-    /* Нічна тема */
-    body.night {
-      background-color: #121824;
-      color: #c8d0e7;
-    }
-
-    body.night header {
-      background-color: #004400;
-    }
-
-    body.night .nav a {
-      background-color: #006600;
-      color: #c8d0e7;
-    }
-
-    body.night .nav a:hover {
-      background-color: #003300;
-    }
-
-    body.night .column {
-      background-color: #1e2a3a;
-      border-color: #555;
-      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.1);
-    }
-
-    body.night .column:hover {
-      box-shadow: 0 15px 25px rgba(255, 255, 255, 0.2);
-    }
-
-    body.night .button {
-      background-color: #006600;
-      box-shadow: 0 4px 10px rgba(0, 102, 0, 0.6);
-    }
-
-    body.night .button:hover {
-      background-color: #003300;
-      box-shadow: 0 6px 15px rgba(0, 51, 0, 0.8);
-    }
-
-    body.night footer {
-      background-color: #223322;
-      color: #a2c48b;
-      border-top-color: #446633;
-    }
-
-    /* Переключатель темы */
-    .theme-toggle {
+    /* Кнопка переключения темы */
+    #theme-toggle {
+      position: absolute;
+      right: 20px;
+      top: 20px;
       background: transparent;
       border: 2px solid white;
       border-radius: 20px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       color: white;
-      font-weight: bold;
-      padding: 8px 16px;
-      font-size: 14px;
-      transition: background-color 0.3s, color 0.3s;
+      font-size: 18px;
+      line-height: 36px;
+      text-align: center;
       user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .theme-toggle:hover {
-      background-color: white;
-      color: #00cc00;
+    #theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.3);
     }
 
   </style>
@@ -234,13 +220,14 @@
       <a href="#">Головна</a>
       <a href="porady.html">Детальніше</a>
     </div>
+    <button id="theme-toggle" title="Переключити тему">🌙</button>
   </header>
 
   <div class="container">
     <div class="column">
       <p><b>Привіт!</b></p>
       <p>
-        Цей сайт допоможе тобі дізнатися, як підтримувати здоров’я кожного дня.  
+        Цей сайт допоможе тобі дізнатися, як підтримувати здоров’я кожного дня.
         Здоров’я — це не лише відсутність хвороб, а стан повного фізичного, психологічного та соціального благополуччя.
       </p>
       <p>
@@ -249,40 +236,9 @@
       </p>
       <div>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKK7yv4p28g8v9PClGNhI8GPXe0WovrxyYdw&s" alt="здорове серце" />
-        <img src="https://media.istockphoto.com/id/515232220/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%87%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%D0%BA-%D0%B1%D1%96%D0%B3%D1%83%D0%BD.jpg?s=612x612&w=0&k=20&c=pB9b5kxT6nkUb9a0jsjYZM5NGsCoUlA6rqWDD1RuMfY=" alt="бігун" />
+        <img src="https://media.istockphoto.com/id/515232220/uk/%D1%84%D0%BE%D1%82%D0%BE/%D1%87%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%D0%BA-%D0%B1%D1%96%D0%B3%D1%83%D0%BD.jpg?s=612x612&w=0&k=20&c=dueTojiQV0-YsjosNQXPUtFJwZVsietJ7Y27XSfFQvQ=" alt="спорт" />
+        <img src="https://fire-house.ru/wp-content/uploads/2023/08/fh-priroda1.jpg" alt="фрукти" />
       </div>
+      <button class="button" onclick="window.location.href='porady.html'">Дізнатися більше</button>
     </div>
 
-    <div class="column">
-      <p>Ось деякі правила, яких варто дотримуватися для збереження здоров’я:</p>
-      <ul style="text-align:left; font-size: 18px; line-height: 1.5;">
-        <li>Збалансоване харчування, багате на овочі та фрукти.</li>
-        <li>Регулярна фізична активність не менше 30 хвилин на день.</li>
-        <li>Достатній та якісний сон (7-8 годин щоденно).</li>
-        <li>Зниження стресу та підтримка позитивного настрою.</li>
-        <li>Відмова від шкідливих звичок (паління, надмірне вживання алкоголю).</li>
-        <li>Регулярні медичні огляди.</li>
-      </ul>
-      <button class="button" onclick="window.location.href='porady.html'">Детальніше</button>
-    </div>
-  </div>
-
-  <footer>
-    © 2023 Моє здоров’я. Всі права захищені.
-   <button class="theme-toggle" id="themeToggle">Нічна тема</button>
-  </footer>
-
-  <script>
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('night');
-      if(document.body.classList.contains('night')) {
-        toggleBtn.textContent = 'Денна тема';
-      } else {
-        toggleBtn.textContent = 'Нічна тема';
-      }
-    });
-  </script>
-
-</body>
-</html>
